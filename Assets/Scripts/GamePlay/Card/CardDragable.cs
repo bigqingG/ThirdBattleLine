@@ -20,16 +20,16 @@ public class CardDragable : MonoBehaviour,IDragHandler, IBeginDragHandler, IEndD
 
     private void Awake()
     {
-        playZone = GameObject.Find("Canvas/PlayZone")?.GetComponent<RectTransform>();
+        //playZone = GameObject.Find("Canvas/PlayZone")?.GetComponent<RectTransform>();
         rectTransform = GetComponent<RectTransform>();
         canvas = FindObjectOfType<Canvas>();
         cardView = GetComponent<CardViewController>(); // 获取视图控制器
 
-        if (playZone == null)
-        {
-            playZone = GameObject.Find("PlayZone")?.GetComponent<RectTransform>();
-            if (playZone == null) Debug.LogError("PlayZone not found! 请在Canvas下创建PlayZone GameObject。");
-        }
+        //if (playZone == null)
+        //{
+        //    playZone = GameObject.Find("PlayZone")?.GetComponent<RectTransform>();
+        //    if (playZone == null) Debug.LogError("PlayZone not found! 请在Canvas下创建PlayZone GameObject。");
+        //}
     }
 
     // 拖拽开始：检查权限，记录位置，放大反馈
@@ -62,43 +62,43 @@ public class CardDragable : MonoBehaviour,IDragHandler, IBeginDragHandler, IEndD
     // 拖拽结束：检测区域，处理出牌或返回
     public void OnEndDrag(PointerEventData eventData)
     {
-        if (!isDragging) return;
-        isDragging = false;
-        //rectTransform.localScale = Vector3.one; // 恢复大小
+        //if (!isDragging) return;
+        //isDragging = false;
+        ////rectTransform.localScale = Vector3.one; // 恢复大小
 
-        Vector2 endScreenPos = eventData.position;
-        bool inPlayZone = RectTransformUtility.RectangleContainsScreenPoint(playZone, endScreenPos, canvas.worldCamera);
+        //Vector2 endScreenPos = eventData.position;
+        //bool inPlayZone = RectTransformUtility.RectangleContainsScreenPoint(playZone, endScreenPos, canvas.worldCamera);
 
-        if (inPlayZone)
-        {
-            // 在出牌区：固定到松开位置，尝试出牌，两秒后销毁
-            Vector2 finalLocalPos;
-            RectTransformUtility.ScreenPointToLocalPointInRectangle(
-                playZone,
-                endScreenPos,
-                canvas.worldCamera,
-                out finalLocalPos
-            );
-            rectTransform.SetParent(playZone, false); // 移到出牌区（worldPositionStays=false保持本地坐标）
-            rectTransform.anchoredPosition = finalLocalPos;
+        //if (inPlayZone)
+        //{
+        //    // 在出牌区：固定到松开位置，尝试出牌，两秒后销毁
+        //    Vector2 finalLocalPos;
+        //    RectTransformUtility.ScreenPointToLocalPointInRectangle(
+        //        playZone,
+        //        endScreenPos,
+        //        canvas.worldCamera,
+        //        out finalLocalPos
+        //    );
+        //    rectTransform.SetParent(playZone, false); // 移到出牌区（worldPositionStays=false保持本地坐标）
+        //    rectTransform.anchoredPosition = finalLocalPos;
 
-            // 模拟出牌（调用PlayerController）
-            if (boundCard.owner.TryPlayCard(boundCard))
-            {
-                Debug.Log($"出牌成功: {boundCard.sourceData.cardData.displayName}");
-                StartCoroutine(DestroyAfterDelay(destroyDelay));
-            }
-            else
-            {
-                // 出牌失败，返回原位
-                ReturnToOriginal();
-            }
-        }
-        else
-        {
-            // 不在出牌区：返回原位
-            ReturnToOriginal();
-        }
+        //    // 模拟出牌（调用PlayerController）
+        //    if (boundCard.owner.TryPlayCard(boundCard))
+        //    {
+        //        Debug.Log($"出牌成功: {boundCard.sourceData.cardData.displayName}");
+        //        StartCoroutine(DestroyAfterDelay(destroyDelay));
+        //    }
+        //    else
+        //    {
+        //        // 出牌失败，返回原位
+        //        ReturnToOriginal();
+        //    }
+        //}
+        //else
+        //{
+        //    // 不在出牌区：返回原位
+        //    ReturnToOriginal();
+        //}
     }
 
     // 返回原位置动画协程
