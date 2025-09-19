@@ -1,0 +1,29 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3272db3472361f54a9ad21e6504cb169, type: 3}
+  m_Name: LANG-001
+  m_EditorClassIdentifier: 
+  cardData:
+    cardID: L-001
+    displayName: "\u8BF8\u845B\u5B54\u660E"
+    description: "\u4F60\u7684\u7B56\u7565\u5361\uFF08Spell\uFF09\u8D39\u7528-1 \u4EA1\u8BED\uFF1A\u62BD3\u5F20\u724C "
+    cardType: 1
+    triggerType: 0
+    manaCost: 5
+    health: 3
+    attack: 3
+    isPersistent: 1
+    maxHealth: 5
+  effects: []
+  cardArt: {fileID: 21300000, guid: f07ee6cef8d858447b60d86ffbafb6d3, type: 3}
+  cardPrefab: {fileID: 3177106689639582431, guid: 1124adcb76bca0142bf15406af83e636,
+    type: 3}
