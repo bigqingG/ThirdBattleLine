@@ -20,25 +20,23 @@ public class DragTest : MonoBehaviour
         mainCamera = Camera.main;
     }
 
-    void OnMouseDown()
-    {
-        mouseZCoord = mainCamera.WorldToScreenPoint(transform.position).z;
-        dragOffset = transform.position - GetMouseWorldPos();
-    }
 
-    void OnMouseDrag()
+    public void CheckInRange(Vector2 cardPos)
     {
-        Vector3 newPos = GetMouseWorldPos() + dragOffset;
-        newPos.x = Mathf.Clamp(newPos.x, xMin, xMax);
-        newPos.y = Mathf.Clamp(newPos.y, yMin, yMax);
-        transform.position = newPos;
-    }
-
-    Vector3 GetMouseWorldPos()
-    {
-        Vector3 mousePoint = Input.mousePosition;
-        mousePoint.z = mouseZCoord;
-        return mainCamera.ScreenToWorldPoint(mousePoint);
+        //检查卡牌是否在视图范围内
+        if (cardPos.x < xMin || cardPos.x > xMax || cardPos.y < yMin || cardPos.y > yMax)
+        {
+            //卡牌不在出牌区域，禁止出牌
+            Debug.Log("卡牌不在出牌区域，禁止出牌");
+            return;
+        
+        }
+        else
+        {
+            //卡牌在出牌区域，允许出牌
+            Debug.Log("卡牌在出牌区域，允许出牌");
+            return;
+        }
     }
 
     // 编辑器可视化辅助（运行时自动隐藏）
