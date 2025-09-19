@@ -330,6 +330,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2d0df1d099cc7154c8de75a9e12ac7da, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  xMin: 500
+  xMax: 1300
+  yMin: 300
+  yMax: 750
 --- !u!1 &999173724
 GameObject:
   m_ObjectHideFlags: 0
