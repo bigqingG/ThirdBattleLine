@@ -12,12 +12,11 @@ public class DragTest : MonoBehaviour
     [SerializeField] private float yMax = 200f;
 
     private Vector3 dragOffset;
-    private Camera mainCamera;
     private float mouseZCoord;
 
     void Start()
     {
-        mainCamera = Camera.main;
+       
     }
 
 
